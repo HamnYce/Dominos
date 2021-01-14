@@ -15,7 +15,7 @@ dname = f"{name} - {kyu}"
 os.mkdir(dname)
 print(f"Directory '{dname}' created!")
 os.chdir(dname)
-md = open(f"{name}.md","w")
+md = open(f"README.md","w")
 md.write(desc)
 md.close()
 py = open(f"solution.py","w")
