@@ -10,9 +10,10 @@ data = resp.json()
 name = data['name']
 desc = data['description']
 kyu = data["rank"]['name']
-print(kyu)
+
 dname = f"{name} - {kyu}"
 os.mkdir(dname)
+print(f"Directory '{dname}' created!")
 os.chdir(dname)
 md = open(f"{name}.md","w")
 md.write(desc)
