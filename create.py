@@ -2,17 +2,23 @@ import os
 import requests
 slug = input("What is the url/slug of the Kata?")
 if ".com" in slug:
-    slug = slug.split("/")[-1]
+    slug = max(slug.split("/"),key=len)
 url = f"https://www.codewars.com/api/v1/code-challenges/{slug}"
-
 resp = requests.get(url=url)
 data = resp.json()
+if 'name' not in data:
+    print("Invalid url/slug! please check your input and try again")
+    exit()
 name = data['name']
 desc = data['description']
 kyu = data["rank"]['name']
 
 dname = f"{name} - {kyu}"
-os.mkdir(dname)
+try:
+    os.mkdir(dname)
+except:
+    print("Directory not created. make sure it doesnt already exist!")
+    exit()
 print(f"Directory '{dname}' created!")
 os.chdir(dname)
 md = open(f"README.md","w")
