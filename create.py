@@ -16,8 +16,8 @@ kyu = data["rank"]['name']
 dname = f"{name} - {kyu}"
 try:
     os.mkdir(dname)
-except:
-    print("Directory not created. make sure it doesnt already exist!")
+except Exception as e:
+    print(f"Directory not created. Error: {e}")
     exit()
 print(f"Directory '{dname}' created!")
 os.chdir(dname)
