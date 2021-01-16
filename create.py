@@ -9,7 +9,7 @@ data = resp.json()
 if 'name' not in data:
     print("Invalid url/slug! please check your input and try again")
     exit()
-name = data['name']
+name = data['name'].replace("/","-")
 desc = data['description']
 kyu = data["rank"]['name']
 
